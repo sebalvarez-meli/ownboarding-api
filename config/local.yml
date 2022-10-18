@@ -1,0 +1,17 @@
+rest_client:
+  timeout: 3000
+  external_calls:
+    token_api:
+      domain: https://613afbc6110e000017a453fe.mockapi.io
+      resources:
+        get_token:
+          request_uri: /token/get/%s
+database:
+  driver: mysql
+  host: localhost
+  name: api_base
+  user: juan
+  password: password
+  max_idle_connections_per_host: 10
+  max_open_connections: 10
+  connection_max_life_time_seconds: 60
