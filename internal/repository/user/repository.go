@@ -16,7 +16,7 @@ func NewRepository(db database.Database) *Repository {
 	}
 }
 
-func (r *Repository) Get(ctx context.Context, id string) (*model.User, error) {
+func (r *Repository) Get(ctx context.Context, id int64) (*model.User, error) {
 	modelDb := &model.User{
 		Id: id,
 	}

@@ -17,7 +17,7 @@ type Container struct {
 }
 
 type UserRepository interface {
-	Get(ctx context.Context, id string) (*model.User, error)
+	Get(ctx context.Context, id int64) (*model.User, error)
 }
 
 type TokenRepository interface {

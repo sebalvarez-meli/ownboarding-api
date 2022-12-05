@@ -7,7 +7,7 @@ import (
 )
 
 type Service interface {
-	Get(ctx context.Context, id string) (*model.User, error)
+	Get(ctx context.Context, id int64) (*model.User, error)
 }
 
 type service struct {
@@ -20,12 +20,12 @@ func NewService(container domain.Container) Service {
 	}
 }
 
-func (s service) Get(ctx context.Context, id string) (*model.User, error) {
-	token, err := s.container.TokenRepo.Get(ctx, id)
+func (s service) Get(ctx context.Context, id int64) (*model.User, error) {
+	token, err := s.container.TokenRepo.Get(ctx, string(id))
 	if err != nil {
 		return nil, err
 	}
-	user, err := s.container.UserRepo.Get(ctx, token.UserId)
+	user, err := s.container.UserRepo.Get(ctx, id)
 	if err != nil {
 		return nil, err
 	}
